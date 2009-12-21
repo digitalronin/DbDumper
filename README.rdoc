@@ -1,42 +1,42 @@
-# = DbDumper
-#
-# Module and classes to help dump a database without locking tables for 
-# extended periods.
-#
-# The classes provide a simple wrapper around the mysqldump command, such that;
-#
-# * Each table is dumped individually.
-# * Tables are dumped either whole or daily. 
-#
-# When dumped whole, the archive file created will include table drop and 
-# create statements.
-#
-# When dumped daily, archive files are created for each day's worth of data
-# in the table, and no drop/create statements are included in the archive 
-# files. So, it should be safe to restore a day at a time without affecting
-# the rest of the data in the table.
-#
-# NB: This is only suitable for tables where data is written/changed on a 
-# single day, and then only read thereafter. If 'old' days might be changed
-# on a later date, this class will not be smart enough to re-dump the changed
-# days.
-#
-# Daily archives are created for each day from 'start_date' to yesterday, and 
-# are only created where the corresponding daily archive file does not exist
-# already.
-#
-# == Requires
-#
-# - Unix-like OS (uses pipes)
-# - mysqldump and gzip in the PATH.
-# 
-# == Limitations
-#
-# - Hard-coded to use gzip 
-# - Only works on localhost. 
-#
-# Changing both of those should be trivial.
-#
-# Author:: David Salgado
-# Copyright:: Copyright (c) 2009 David Salgado
-# License:: Distributes under the same terms as Ruby
+= DbDumper
+
+Module and classes to help dump a database without locking tables for 
+extended periods.
+
+The classes provide a simple wrapper around the mysqldump command, such that;
+
+* Each table is dumped individually.
+* Tables are dumped either whole or daily. 
+
+When dumped whole, the archive file created will include table drop and 
+create statements.
+
+When dumped daily, archive files are created for each day's worth of data
+in the table, and no drop/create statements are included in the archive 
+files. So, it should be safe to restore a day at a time without affecting
+the rest of the data in the table.
+
+NB: This is only suitable for tables where data is written/changed on a 
+single day, and then only read thereafter. If 'old' days might be changed
+on a later date, this class will not be smart enough to re-dump the changed
+days.
+
+Daily archives are created for each day from 'start_date' to yesterday, and 
+are only created where the corresponding daily archive file does not exist
+already.
+
+== Requires
+
+- Unix-like OS (uses pipes)
+- mysqldump and gzip in the PATH.
+
+== Limitations
+
+- Hard-coded to use gzip 
+- Only works on localhost. 
+
+Changing both of those should be trivial.
+
+Author:: David Salgado
+Copyright:: Copyright (c) 2009 David Salgado
+License:: Distributes under the same terms as Ruby

@@ -18,8 +18,7 @@ the rest of the data in the table.
 
 NB: This is only suitable for tables where data is written/changed on a 
 single day, and then only read thereafter. If 'old' days might be changed
-on a later date, this class will not be smart enough to re-dump the changed
-days.
+on a later date, this class is not smart enough to re-dump the changed days.
 
 Daily archives are created for each day from 'start_date' to yesterday, and 
 are only created where the corresponding daily archive file does not exist

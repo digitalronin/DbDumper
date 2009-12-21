@@ -1,6 +1,6 @@
 = DbDumper
 
-Module and classes to help dump a database without locking tables for 
+Module and classes to help dump a mysql database without locking tables for 
 extended periods.
 
 The classes provide a simple wrapper around the mysqldump command, such that;

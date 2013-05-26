@@ -214,7 +214,7 @@ module DbDumper
 
     def mysqldump(options = {})
       passwd = password.nil? ? '' : "--password=#{password}"
-      "mysqldump --user=#{user} #{passwd} #{options[:pre]} #{database} #{options[:post]}"
+      "mysqldump --user=#{user} #{passwd} --single-transaction #{options[:pre]} #{database} #{options[:post]}"
     end
 
   end

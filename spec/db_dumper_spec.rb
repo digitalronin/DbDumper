@@ -93,7 +93,7 @@ describe DbDumper::Database do
     foo = DbDumper::DailyTable.new(:name => 'foo')
     dbu.tables << foo
     dbu.dump
-    contents = `zcat testdb/foo/foo.#{Date.yesterday.for_db}.sql.gz`
+    contents = `gzip -cd testdb/foo/foo.#{Date.yesterday.for_db}.sql.gz`
     contents.should_not match(/DROP TABLE IF EXISTS `foo`/)
     contents.should_not match(/CREATE TABLE `foo`/)
   end
@@ -143,7 +143,7 @@ describe DbDumper::Database do
     create_table @params[:database], 'foo'
     dbu = DbDumper::Database.new @params.merge(:tables => [DbDumper::Table.new(:name => 'foo')])
     dbu.dump
-    contents = `zcat testdb/foo.sql.gz`
+    contents = `gzip -cd testdb/foo.sql.gz`
     contents.should match(/DROP TABLE IF EXISTS `foo`/)
     contents.should match(/CREATE TABLE `foo`/)
   end
